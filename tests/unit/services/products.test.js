@@ -25,11 +25,11 @@ describe('Testando camada service de produtos', function () {
 
     it('Recuperando produtos po id', async function () {
 
-    sinon.stub(productsModel, 'findById').resolves(productList);
+    sinon.stub(productsModel, 'findById').resolves([productList[0]]);
 
     const result = await productsService.findById(1);
     
     expect(result.type).to.be.equal(null);
-    expect(result.message).to.deep.equal(productList[0]);
+    expect(result.message).to.deep.equal([productList[0]]);
   });
 });

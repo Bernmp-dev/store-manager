@@ -54,7 +54,12 @@ describe('Testando camada controller de produtos ', function () {
   
   });
 
-    describe('Recuperando produto por id', function () {
+  describe('Recuperando produto por id', function () {
+
+        beforeEach(function () {
+    sinon.restore();
+        });
+    
     it('deve responder com 200 e os dados do banco quando existir', async function () {
       const res = {};
       const req = {
@@ -87,10 +92,10 @@ describe('Testando camada controller de produtos ', function () {
         .stub(productsService, 'findById')
         .resolves({ type: 'INVALID_VALUE', message: '"id" must be a number' });
 
-      await productsService.findById(req, res);
+      await productsController.findById(req, res);
 
       expect(res.status).to.have.been.calledWith(422); 
-      expect(res.json).to.have.been.calledWith('"id" must be a number');
+      expect(res.json).to.have.been.calledWith({ message: '"id" must be a number' });
     });
 
     it('ao passar um id que não existe no banco deve retornar um erro', async function () {
@@ -109,7 +114,7 @@ describe('Testando camada controller de produtos ', function () {
       await productsController.findById(req, res);
 
       expect(res.status).to.have.been.calledWith(404); 
-      expect(res.json).to.have.been.calledWith('Product not found');
+      expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
     });
   });
 });

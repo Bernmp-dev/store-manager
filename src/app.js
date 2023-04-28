@@ -16,12 +16,10 @@ app.get(
   productsController.listProducts,
 );
 
-// app.get(
-//   '/products:id',
-//   productsController.listProducts, () => {
-    
-//   },
-// );
+app.get(
+  '/products/:id',
+  productsController.findById,
+);
 
 // não remova essa exportação, é para o avaliador funcionar
 // você pode registrar suas rotas normalmente, como o exemplo acima
