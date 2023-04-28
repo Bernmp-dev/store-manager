@@ -3,10 +3,10 @@ const sinon = require('sinon');
 
 
 const connection = require('../../../src/models/connection');
-const { productList } = require('./mocks/products');
+const { productList } = require('../mocks/products.mock');
 const { productsModel } = require('../../../src/models')
 
-describe('Unidade Model de produtos', function () {
+describe('Testando camada Model de produtos', function () {
 
   beforeEach(function () {
     sinon.restore();
@@ -20,7 +20,7 @@ describe('Unidade Model de produtos', function () {
     expect(result).to.be.deep.equal(productList)
   });
 
-    it('Recuperando produtos por id', async function () {
+    it('Recuperando produto por id', async function () {
     
     sinon.stub(connection, 'execute').resolves([productList[0]])
     const result = await productsModel.findById(1);
