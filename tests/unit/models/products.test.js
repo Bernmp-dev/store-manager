@@ -20,7 +20,7 @@ describe('Unidade Model de produtos', function () {
     expect(result).to.be.deep.equal(productList)
   });
 
-    it('Recuperando lista de produtos', async function () {
+    it('Recuperando produtos por id', async function () {
     
     sinon.stub(connection, 'execute').resolves([productList[0]])
     const result = await productsModel.findById(1);
