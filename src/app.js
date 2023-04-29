@@ -11,6 +11,11 @@ app.get('/', (_request, response) => {
   response.send();
 });
 
+app.post(
+  '/products',
+    productsController.createProduct,
+);
+
 app.get(
   '/products',
   productsController.listProducts,

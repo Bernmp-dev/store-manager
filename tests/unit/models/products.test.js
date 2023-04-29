@@ -26,5 +26,6 @@ describe('Testando camada Model de produtos', function () {
       const result = await productsModel.findById(1);
 
     expect(result).to.be.deep.equal(productList[0])
-  });
+    });
+  
 });

@@ -19,12 +19,17 @@
     "containerId": "",
     "name": "localhost/products Copy",
     "url": "localhost:3001/products",
-    "method": "GET",
+    "method": "POST",
     "sortNum": 0,
     "created": "2023-04-27T21:05:32.587Z",
-    "modified": "2023-04-27T21:37:47.602Z",
+    "modified": "2023-04-28T23:59:40.613Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Ramiro\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]
