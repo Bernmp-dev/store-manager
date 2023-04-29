@@ -10,17 +10,19 @@ const validateId = (id) => {
 
 const validateNewProduct = (product) => {
   const { error } = addProductSchema.validate(product);
-  const { type, message } = error.details[0]; 
 
-  if (type === 'any.required') {
-    return { type: 'EMPTY_FIELD', message };
+  if (error) {
+    const { type, message } = error.details[0];
+    if (type === 'any.required') {
+      return { type: 'EMPTY_FIELD', message };
+    }
+
+    if (type === 'string.min') {
+      return { type: 'INVALID_VALUE', message };
+    }
   }
   
-  if (type === 'string.min') {
-    return { type: 'INVALID_VALUE', message };
-  }
-  
-  return { type: null, message: '' };
+    return { type: null, message: '' };
 };
 
 module.exports = {
