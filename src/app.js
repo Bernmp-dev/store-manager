@@ -1,6 +1,7 @@
 const express = require('express');
 
-const { productsController } = require('./controllers');
+const { productsController, salesController } = require('./controllers');
+const { findId, validateNewSale } = require('./services/validations/validateInput');
 
 const app = express();
 
@@ -14,6 +15,13 @@ app.get('/', (_request, response) => {
 app.post(
   '/products',
     productsController.createProduct,
+);
+
+app.post(
+  '/sales',
+  validateNewSale,
+  findId,
+  salesController.registerSale,
 );
 
 app.get(

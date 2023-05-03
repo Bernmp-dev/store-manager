@@ -14,7 +14,7 @@ const findById = async (productId) => {
   
   if (!product) {
     return {
-    type: 'PRODUCT_NOT_FOUND',
+    type: 'NOT_FOUND',
     message: 'Product not found',
    };
   }

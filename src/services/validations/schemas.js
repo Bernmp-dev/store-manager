@@ -1,29 +1,30 @@
 const Joi = require('joi');
 
-const idSchema = Joi.number().integer().min(1).required();
+const idSchema = Joi.number().integer().min(1).required()
+  .messages({
+  'any.required': '{{#label}} is required',
+});
 
 const addProductSchema = Joi.object({
-  name: Joi.string().min(5).required().label('name'),
-}).messages({
-  'any.required': '{{#label}} is required',
-  'string.min': '{{#label}} length must be at least {{#limit}} characters long',
+  name: Joi.string().min(5).required()
+    .label('name'),
+}).required().messages({
+  'any.required': '"{{#key}}" is required',
+  'string.min': '"{{#key}}" length must be at least {{#limit}} characters long',
 });
 
-const pointSchema = Joi.string().min(3).required();
-
-const waypointSchema = Joi.object({
-  address: pointSchema,
-  stopOrder: Joi.number().integer().min(1) });
-
-const addRequestTravelSchema = Joi.object({
-  passengerId: idSchema,
-  startingAddress: pointSchema,
-  endingAddress: pointSchema.invalid(Joi.ref('startingAddress')),
-  waypoints: Joi.array().items(waypointSchema),
+const salesItemSchema = Joi.object({
+  productId: Joi.number().integer().min(1).required(),
+  quantity: Joi.number().integer().min(1).required(),
+}).required().messages({
+  'any.required': '"{{#key}}" is required',
+  'number.min': '"{{#key}}" must be grater or equalto {{#limit}}',
 });
+
+const salesSchema = Joi.array().items(salesItemSchema);
 
 module.exports = {
   idSchema,
   addProductSchema,
-  addRequestTravelSchema,
+  salesSchema,
 };

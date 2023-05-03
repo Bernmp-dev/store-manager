@@ -20,12 +20,24 @@ describe('Testando camada Model de produtos', function () {
     expect(result).to.be.deep.equal(productList)
   });
 
-    it('Recuperando produtos por id', async function () {
-    
-    sinon.stub(connection, 'execute').resolves([[productList[0]]])
-      const result = await productsModel.findById(1);
-
-    expect(result).to.be.deep.equal(productList[0])
-    });
+  it('Recuperando produtos por id', async function () {
   
+    sinon.stub(connection, 'execute').resolves([[productList[0]]])
+    const result = await productsModel.findById(1);
+    
+    expect(result).to.be.deep.equal(productList[0])
+  });
+  
+  it('Criando e inserindo produto no banco de dados', async function () {
+    const productName = 'Produto de Teste';
+
+    sinon.stub(connection, 'execute').resolves([{ insertId: 1 }])
+    const result = await productsModel.createProduct({ name: productName });
+
+    expect(result).to.be.equal(1)
+    expect(connection.execute).to.have.been.calledWith(
+      'INSERT INTO products ( name ) VALUE ( ? )',
+      [productName],
+    );
+  });
 });
