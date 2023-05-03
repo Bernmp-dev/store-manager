@@ -13,11 +13,23 @@ const registerSaleProduct = async (saleId, productId, quantity) => {
     'INSERT INTO sales_products ( sale_id, product_id, quantity ) VALUE ( ?, ?, ? )',
     [saleId, productId, quantity],
   );
-
+  
   return affectedRows;
+};
+
+const listSales = async () => {
+  const [result] = await connection.execute(
+    `SELECT sp.*, s.date
+    FROM sales_products sp
+    JOIN sales s ON s.id = sp.sale_id
+    ORDER BY sp.sale_id ASC, sp.product_id ASC`,
+  );
+
+  return result;
 };
 
 module.exports = {
   registerSale,
   registerSaleProduct,
+  listSales,
 };

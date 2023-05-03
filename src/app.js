@@ -15,11 +15,6 @@ app.post(
     productsController.createProduct,
 );
 
-app.post(
-  '/sales',
-  salesController.registerSale,
-);
-
 app.get(
   '/products',
   productsController.listProducts,
@@ -28,6 +23,16 @@ app.get(
 app.get(
   '/products/:id',
   productsController.findById,
+);
+
+app.get(
+  '/sales',
+  salesController.listSales,
+);
+
+app.post(
+  '/sales',
+  salesController.registerSale,
 );
 
 // não remova essa exportação, é para o avaliador funcionar
