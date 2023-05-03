@@ -18,7 +18,7 @@ const salesItemSchema = Joi.object({
   quantity: Joi.number().integer().min(1).required(),
 }).required().messages({
   'any.required': '"{{#key}}" is required',
-  'number.min': '"{{#key}}" must be grater or equalto {{#limit}}',
+  'number.min': '"{{#key}}" must be greater than or equal to {{#limit}}',
 });
 
 const salesSchema = Joi.array().items(salesItemSchema);

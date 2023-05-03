@@ -1,9 +1,10 @@
 const { productsModel } = require('../models');
 const schema = require('./validations/validateInput');
+const statusGen = require('../utils/statusGen');
 
 const listProducts = async () => {
   const products = await productsModel.listProducts();
-  return { type: null, message: products };
+  return statusGen(null, products);
 };
 
 const findById = async (productId) => {
@@ -19,7 +20,7 @@ const findById = async (productId) => {
    };
   }
 
-  return { type: null, message: product };
+  return statusGen(null, product);
 };
 
 const createProduct = async (product) => {
@@ -29,7 +30,7 @@ const createProduct = async (product) => {
   const newProductId = await productsModel.createProduct(product);
   const newProduct = await productsModel.findById(newProductId);
 
-  return { type: null, message: newProduct };
+  return statusGen(null, newProduct);
 };
 
 module.exports = {

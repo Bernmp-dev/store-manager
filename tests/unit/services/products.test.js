@@ -43,7 +43,7 @@ describe('Testando camada service de produtos', function () {
       sinon.stub(productsModel, 'findById').resolves({ id: 1});
       const result = await productsService.createProduct({ id: 1 });
 
-      expect(result.type).to.equal('EMPTY_FIELD');
+      expect(result.type).to.equal('any.required');
       expect(result.message).to.deep.equal('"name" is required');
     });
 
@@ -52,7 +52,7 @@ describe('Testando camada service de produtos', function () {
 
       const result = await productsService.createProduct({ id: 1, name: 'aaa' });
 
-      expect(result.type).to.equal('INVALID_VALUE');
+      expect(result.type).to.equal('string.min');
       expect(result.message).to.deep.equal('"name" length must be at least 5 characters long');
     });
     

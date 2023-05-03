@@ -1,7 +1,6 @@
 const { idSchema, addProductSchema, salesSchema } = require('./schemas');
 const { productsModel } = require('../../models');
-
-const statusGen = (type = null, message = '') => ({ type, message }); 
+const statusGen = require('../../utils/statusGen');
 
 const validateId = (id) => {
   const { error } = idSchema.validate(id);
@@ -25,31 +24,28 @@ const validateNewProduct = (product) => {
     return statusGen();
 };
 
-const findId = async (_res, req, next) => {
-  if (req.body) {
-    const promises = req.body
-      .map(({ productId: pId }) => productsModel.findById(pId));
-  
-    const results = await Promise.all(promises);
-
-    if (results.includes(undefined)) {
-      return statusGen('NOT_FOUND', 'Product not found');
-    }
-    return next();
-  }
-
-  return next();
-};
-
-const validateNewSale = async (_res, req, next) => {
-  const { error } = salesSchema.validate(req.body);
+const validateNewSale = async (sale) => {
+  const { error } = salesSchema.validate(sale);
 
   if (error) {
     const { type, message } = error.details[0];
     return statusGen(type, message);
   }
   
-  return next();
+  return statusGen();
+};
+
+const findId = async (sale) => {
+  const promises = sale
+    .map(({ productId }) => productsModel.findById(productId));
+  
+  const results = await Promise.all(promises);
+
+  if (results.includes(undefined)) {
+    return statusGen('NOT_FOUND', 'Product not found');
+  }
+
+  return statusGen();
 };
 
 module.exports = {

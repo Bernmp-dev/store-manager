@@ -19,8 +19,6 @@ app.post(
 
 app.post(
   '/sales',
-  validateNewSale,
-  findId,
   salesController.registerSale,
 );
 
