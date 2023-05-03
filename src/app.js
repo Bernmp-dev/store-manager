@@ -30,6 +30,11 @@ app.get(
   salesController.listSales,
 );
 
+app.get(
+  '/sales/:id',
+  salesController.findSaleById,
+);
+
 app.post(
   '/sales',
   salesController.registerSale,

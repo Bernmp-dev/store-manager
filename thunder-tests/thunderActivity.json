@@ -64,5 +64,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "2d192076-baea-4987-a057-4bde47bbf854",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3001/sales/2",
+    "url": "localhost:3001/sales/2",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-03T20:42:19.575Z",
+    "modified": "2023-05-03T20:42:19.575Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]

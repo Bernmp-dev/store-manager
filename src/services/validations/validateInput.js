@@ -35,7 +35,7 @@ const validateNewSale = async (sale) => {
   return statusGen();
 };
 
-const ValidateSaleByProductId = async (sale) => {
+const validateSaleByProductId = async (sale) => {
   const promises = sale
     .map(({ productId }) => productsModel.findById(productId));
   
@@ -52,6 +52,6 @@ module.exports = {
   validateId,
   validateNewProduct,
   validateNewSale,
-  ValidateSaleByProductId,
-
+  validateSaleByProductId,
+  // validateSaleId,
 };

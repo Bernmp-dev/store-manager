@@ -20,7 +20,7 @@ const registerSale = async (sale) => {
   let error = await schema.validateNewSale(sale);
   if (error.type) return error;
 
-  error = await schema.ValidateSaleByProductId(sale);
+  error = await schema.validateSaleByProductId(sale);
   if (error.type) return error;
 
   const saleId = await salesModel.registerSale();
@@ -45,7 +45,27 @@ const listSales = async () => {
   return statusGen(null, salesList);
 };
 
+const findSaleById = async (id) => {
+  const error = schema.validateId(id);
+  if (error.type) return error;
+
+  let sale = await salesModel.findSaleById(id);
+
+  if (!sale || sale.length <= 0) {
+    return statusGen('NOT_FOUND', 'Sale not found');
+  }
+
+  sale = sale.map(({ 
+  date,
+  product_id: productId,
+  quantity,
+  }) => ({ date, productId, quantity }));
+
+  return statusGen(null, sale);
+};
+
 module.exports = {
   registerSale,
   listSales,
+  findSaleById,
 };
