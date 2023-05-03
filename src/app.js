@@ -1,7 +1,5 @@
 const express = require('express');
-
 const { productsController, salesController } = require('./controllers');
-const { findId, validateNewSale } = require('./services/validations/validateInput');
 
 const app = express();
 
