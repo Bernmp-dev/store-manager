@@ -10,7 +10,7 @@ const registerSale = async (req, res) => {
 };
 
 const listSales = async (_req, res) => {
-    const { type, message } = await salesService.listSales();
+  const { type, message } = await salesService.listSales();
 
   if (type) return res.status(errorMap.mapError(type)).json({ message });
 

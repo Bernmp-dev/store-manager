@@ -38,7 +38,6 @@ const findSaleById = async (saleId) => {
     [saleId],
   );
 
-  console.log(result);
   return result;
 };
 

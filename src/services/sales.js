@@ -12,7 +12,7 @@ const registerSaleProduct = async (sale, saleId) => {
 
   newSale.itemsSold = sale
     .map(({ productId, quantity }) => ({ productId, quantity }));
-
+  
   return statusGen(null, newSale);
 };
 
