@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "_id": "c21f9e44-49f5-462a-89cf-62150ef92993",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3001/products/1",
+    "url": "localhost:3001/products/1",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-05-04T19:29:50.729Z",
+    "modified": "2023-05-04T19:29:50.729Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

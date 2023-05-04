@@ -30,6 +30,11 @@ app.put(
   productsController.updateProduct,
 );
 
+app.delete(
+  '/products/:id',
+  productsController.deleteProduct,
+);
+
 app.get(
   '/sales',
   salesController.listSales,

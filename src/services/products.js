@@ -39,9 +39,21 @@ const updateProduct = async ({ id, name }) => {
   return statusGen(null, { id, name });
 };
 
+const deleteProduct = async (id) => {
+  const error = await findProductById(id);
+  if (error.type) return error;
+
+  const affectedRows = await productsModel.deleteProduct(id);
+
+  if (affectedRows <= 0) return statusGen('DATABASE_ERROR', 'Erro no banco de dados');
+
+  return statusGen();
+};
+
 module.exports = {
   listProducts,
   findProductById,
   createProduct,
   updateProduct,
+  deleteProduct,
 };
