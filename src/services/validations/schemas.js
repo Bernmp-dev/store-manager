@@ -3,8 +3,8 @@ const Joi = require('joi');
 const idSchema = Joi.number().integer().min(1).required()
   .messages({
     'any.required': '{{#label}} is required',
-    'number.base': '{{#key}} must be a string',
-    'number.min': '"{{#key}}" value must be at least {{#limit}}',
+    'number.base': '"value" must be a number',
+    'number.min': '"value" must be greater than or equal to {{#limit}}',
 });
 
 const addProductSchema = Joi.object({
