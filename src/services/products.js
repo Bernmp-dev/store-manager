@@ -7,11 +7,11 @@ const listProducts = async () => {
   return statusGen(null, products);
 };
 
-const findById = async (productId) => {
+const findProductById = async (productId) => {
   const error = schema.validateId(productId);
   if (error.type) return error;
 
-  const product = await productsModel.findById(productId);
+  const product = await productsModel.findProductById(productId);
   if (!product) return statusGen('NOT_FOUND', 'Product not found');
 
   return statusGen(null, product);
@@ -22,13 +22,26 @@ const createProduct = async (product) => {
   if (error.type) return error;
 
   const newProductId = await productsModel.createProduct(product);
-  const newProduct = await productsModel.findById(newProductId);
+  const newProduct = await productsModel.findProductById(newProductId);
 
   return statusGen(null, newProduct);
+};
+const updateProduct = async ({ id, name }) => {
+  let error = await findProductById(id);
+  if (error.type) return error;
+
+  error = schema.validateNewProduct({ name });
+  if (error.type) return error;
+
+  const affectedRows = await productsModel.updateProduct({ id, name });
+  if (affectedRows <= 0) return statusGen('DATABASE_ERROR', 'Erro no banco de dados');
+
+  return statusGen(null, { id, name });
 };
 
 module.exports = {
   listProducts,
-  findById,
+  findProductById,
   createProduct,
+  updateProduct,
 };

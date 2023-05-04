@@ -70,10 +70,10 @@ describe('Testando camada controller de produtos ', function () {
       res.json = sinon.stub().returns();
 
       sinon
-        .stub(productsService, 'findById')
+        .stub(productsService, 'findProductById')
         .resolves({ type: null, message: productList[0] });
 
-      await productsController.findById(req, res);
+      await productsController.findProductById(req, res);
 
       expect(res.status).to.have.been.calledWith(200);
       expect(res.json).to.have.been.calledWith(productList[0]);
@@ -89,10 +89,10 @@ describe('Testando camada controller de produtos ', function () {
       res.json = sinon.stub().returns();
 
       sinon
-        .stub(productsService, 'findById')
+        .stub(productsService, 'findProductById')
         .resolves({ type: 'INVALID_VALUE', message: '"id" must be a number' });
 
-      await productsController.findById(req, res);
+      await productsController.findProductById(req, res);
 
       expect(res.status).to.have.been.calledWith(422); 
       expect(res.json).to.have.been.calledWith({ message: '"id" must be a number' });
@@ -108,10 +108,10 @@ describe('Testando camada controller de produtos ', function () {
       res.json = sinon.stub().returns();
  
       sinon
-        .stub(productsService, 'findById')
+        .stub(productsService, 'findProductById')
         .resolves({ type: 'NOT_FOUND', message: 'Product not found' });
 
-      await productsController.findById(req, res);
+      await productsController.findProductById(req, res);
 
       expect(res.status).to.have.been.calledWith(404); 
       expect(res.json).to.have.been.calledWith({ message: 'Product not found' });

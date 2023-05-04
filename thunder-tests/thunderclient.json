@@ -1,1 +1,101 @@
-[]
+[
+  {
+    "_id": "c73a21a9-fa6e-4e39-ad3c-6a060263344e",
+    "colId": "e6d0b0d2-ad1c-4eb1-a524-3b6c2f336958",
+    "containerId": "",
+    "name": "update product",
+    "url": "localhost:3001/products/1",
+    "method": "PUT",
+    "sortNum": 10000,
+    "created": "2023-05-04T16:51:10.511Z",
+    "modified": "2023-05-04T16:51:10.511Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Martelo do Batman\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "abea4801-9adf-49a1-8517-44cf07b2a770",
+    "colId": "e6d0b0d2-ad1c-4eb1-a524-3b6c2f336958",
+    "containerId": "",
+    "name": "get sales list",
+    "url": "localhost:3001/sales/a",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-05-04T16:51:19.901Z",
+    "modified": "2023-05-04T16:51:19.901Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "09eeee58-8617-428f-994e-0d34fc827af3",
+    "colId": "e6d0b0d2-ad1c-4eb1-a524-3b6c2f336958",
+    "containerId": "",
+    "name": "get sale by id",
+    "url": "localhost:3001/sales/1",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-05-04T16:51:27.621Z",
+    "modified": "2023-05-04T16:51:27.621Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "6af898c8-3d0b-4c57-9007-8068e7707dbc",
+    "colId": "e6d0b0d2-ad1c-4eb1-a524-3b6c2f336958",
+    "containerId": "",
+    "name": "register sale",
+    "url": "localhost:3001/sales",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2023-05-04T16:51:34.841Z",
+    "modified": "2023-05-04T16:51:34.841Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 3,\n    \"quantity\": 5\n  }\n]",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "84394d3c-0055-4e28-885d-1a7c1c451350",
+    "colId": "e6d0b0d2-ad1c-4eb1-a524-3b6c2f336958",
+    "containerId": "",
+    "name": "register product",
+    "url": "localhost:3001/products",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2023-05-04T16:51:41.186Z",
+    "modified": "2023-05-04T16:51:41.186Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"nme\": 1\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "27eda5f4-3ce2-49be-a6e9-3a3683b100a6",
+    "colId": "e6d0b0d2-ad1c-4eb1-a524-3b6c2f336958",
+    "containerId": "",
+    "name": "get products by id",
+    "url": "localhost:3001/products/1",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2023-05-04T16:51:45.281Z",
+    "modified": "2023-05-04T16:51:45.281Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

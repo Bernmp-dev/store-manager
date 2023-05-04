@@ -9,9 +9,9 @@ const listProducts = async (_req, res) => {
   res.status(200).json(message);
 };
 
-const findById = async (req, res) => {
+const findProductById = async (req, res) => {
   const { id } = req.params;
-  const { type, message } = await productsService.findById(id);
+  const { type, message } = await productsService.findProductById(id);
 
   if (type) return res.status(errorMap.mapError(type)).json({ message });
 
@@ -26,8 +26,20 @@ const createProduct = async (req, res) => {
   res.status(201).json(message);
 };
 
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  const { type, message } = await productsService.updateProduct({ id, name });
+
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+
+  res.status(200).json(message);
+};
+
 module.exports = {
   listProducts,
-  findById,
+  findProductById,
   createProduct,
+  updateProduct,
 };

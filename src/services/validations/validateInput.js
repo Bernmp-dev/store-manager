@@ -37,7 +37,7 @@ const validateNewSale = async (sale) => {
 
 const validateSaleByProductId = async (sale) => {
   const promises = sale
-    .map(({ productId }) => productsModel.findById(productId));
+    .map(({ productId }) => productsModel.findProductById(productId));
   
   const results = await Promise.all(promises);
 

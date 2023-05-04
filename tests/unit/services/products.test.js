@@ -25,9 +25,9 @@ describe('Testando camada service de produtos', function () {
 
   it('Recuperando produtos po id com sucesso', async function () {
 
-    sinon.stub(productsModel, 'findById').resolves([productList[0]]);
+    sinon.stub(productsModel, 'findProductById').resolves([productList[0]]);
 
-    const result = await productsService.findById(1);
+    const result = await productsService.findProductById(1);
     
     expect(result.type).to.be.equal(null);
     expect(result.message).to.deep.equal([productList[0]]);
@@ -40,7 +40,7 @@ describe('Testando camada service de produtos', function () {
     });
       
     it('A chave name deve existir', async function () {
-      sinon.stub(productsModel, 'findById').resolves({ id: 1});
+      sinon.stub(productsModel, 'findProductById').resolves({ id: 1});
       const result = await productsService.createProduct({ id: 1 });
 
       expect(result.type).to.equal('any.required');
@@ -48,7 +48,7 @@ describe('Testando camada service de produtos', function () {
     });
 
     it('Chave name deve ter no mínimo 5 caracteres', async function () {
-      sinon.stub(productsModel, 'findById').resolves({ id: 1, name: 'aaa' });
+      sinon.stub(productsModel, 'findProductById').resolves({ id: 1, name: 'aaa' });
 
       const result = await productsService.createProduct({ id: 1, name: 'aaa' });
 
@@ -59,7 +59,7 @@ describe('Testando camada service de produtos', function () {
     it('Retorna objeto vazio se produto é válido', async () => {
       const validProduct = { name: 'Produto válido' };
 
-      sinon.stub(productsModel, 'findById').resolves(validProduct);
+      sinon.stub(productsModel, 'findProductById').resolves(validProduct);
 
       const result = await productsService.createProduct(validProduct);
       

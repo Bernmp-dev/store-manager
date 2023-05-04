@@ -7,7 +7,7 @@ const listProducts = async () => {
   return result;
 };
 
-const findById = async (productId) => {
+const findProductById = async (productId) => {
   const [[result]] = await connection.execute(
     'SELECT * FROM products WHERE id = ?',
     [productId],
@@ -25,8 +25,20 @@ const createProduct = async (product) => {
   return insertId;
 };
 
+const updateProduct = async ({ name, id }) => { 
+    const [affectedRows] = await connection.execute(
+      `UPDATE products
+      SET name = ?
+      WHERE id = ?;`,
+    [name, id],
+  );
+
+  return affectedRows;
+};
+
 module.exports = {
   listProducts,
-  findById,
+  findProductById,
   createProduct,
+  updateProduct,
 };

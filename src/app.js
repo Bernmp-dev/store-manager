@@ -22,7 +22,12 @@ app.get(
 
 app.get(
   '/products/:id',
-  productsController.findById,
+  productsController.findProductById,
+);
+
+app.put(
+  '/products/:id',
+  productsController.updateProduct,
 );
 
 app.get(
