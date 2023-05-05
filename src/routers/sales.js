@@ -1,21 +1,21 @@
-const express = require('express');
+const { Router } = require('express');
 const { salesController } = require('../controllers');
 
-const router = express.Router();
+const salesRoutes = Router();
 
-router.get(
-  '/sales',
+salesRoutes.get(
+  '/',
   salesController.listSales,
 );
 
-router.get(
-  '/sales/:id',
+salesRoutes.get(
+  '/:id',
   salesController.findSaleById,
 );
 
-router.post(
-  '/sales',
+salesRoutes.post(
+  '/',
   salesController.registerSale,
 );
 
-module.exports = router;
+module.exports = salesRoutes;
